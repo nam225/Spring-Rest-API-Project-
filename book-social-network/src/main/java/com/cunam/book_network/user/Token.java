@@ -2,7 +2,6 @@ package com.cunam.book_network.user;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +20,7 @@ public class Token {
     private LocalDateTime expiresAt;
     private LocalDateTime validatedAt;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 

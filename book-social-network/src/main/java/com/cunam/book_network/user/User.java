@@ -30,13 +30,20 @@ public class User implements UserDetails, Principal {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String firstname;
+
     private String lastname;
+
     private LocalDate dateOfBirth;
+
     @Column(unique = true)
     private String email;
+
     private String password;
+
     private boolean accountLocked;
+
     private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -45,6 +52,7 @@ public class User implements UserDetails, Principal {
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
+
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
@@ -92,7 +100,7 @@ public class User implements UserDetails, Principal {
         return email;
     }
 
-    private String fullName(){
+    public String fullName(){
         return firstname + " " + lastname;
     }
 }
