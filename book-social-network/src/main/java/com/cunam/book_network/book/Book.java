@@ -4,19 +4,17 @@ import com.cunam.book_network.common.BaseEntity;
 import com.cunam.book_network.feedback.Feedback;
 import com.cunam.book_network.history.BookTransactionHistory;
 import com.cunam.book_network.user.User;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Transient;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -53,7 +51,6 @@ public class Book extends BaseEntity {
                 .mapToDouble(Feedback::getNote)
                 .average()
                 .orElse(0.0);
-        double roundedRate = Math.round(rate * 10.0) / 10.0;
-        return roundedRate;
+        return Math.round(rate * 10.0) / 10.0;
     }
 }
