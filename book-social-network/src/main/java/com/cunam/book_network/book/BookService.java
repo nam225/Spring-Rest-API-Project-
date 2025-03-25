@@ -27,7 +27,7 @@ public class BookService {
     private final BookTransactionHistoryRepository transactionHistoryRepository;
     private final BookRepository bookRepository;
     private final FileStorageService fileStorageService;
-    private BookMapper bookMapper;
+    private final BookMapper bookMapper;
     public Integer save(BookRequest request, Authentication connectedUser) {
         User user = ((User) connectedUser.getPrincipal());
         Book book = bookMapper.toBook(request);
@@ -183,8 +183,8 @@ public class BookService {
             throw new OperationNotPermittedException("The request book can not be borrowed since it is archived or not shareable");
         }
         User user = ((User) connectedUser.getPrincipal());
-        if (Objects.equals(book.getOwner().getId(), user.getId())){
-            throw new OperationNotPermittedException("You can not borrow or return your own book");
+        if (!Objects.equals(book.getOwner().getId(), user.getId())){
+            throw new OperationNotPermittedException("You cannot approve the return of a book you do not own");
         }
         BookTransactionHistory transactionHistory = transactionHistoryRepository.findByBookIdAndOwnerId(bookId, user.getId())
                 .orElseThrow(() -> new OperationNotPermittedException("The book is not returned yet. You can not approve its return"));

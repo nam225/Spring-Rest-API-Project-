@@ -1,33 +1,13 @@
 {
     "openapi": "3.0.1",
     "info": {
-        "title": "OpenApi specification - Alibou",
-        "description": "OpenApi documentation for Spring security",
-        "termsOfService": "Term of service",
-        "contact": {
-            "name": "Nam",
-            "url": "https://aliboucoding.com/courses",
-            "email": "contact@aliboucoding.com"
-        },
-        "license": {
-            "name": "License Name",
-            "url": "https://some-url.com"
-        },
-        "version": "1.0"
+        "title": "OpenAPI definition",
+        "version": "v0"
     },
     "servers": [
         {
             "url": "http://localhost:8088/api/v1",
-            "description": "Local ENV"
-        },
-        {
-            "url": "https://aliboucoding.com/courses",
-            "description": "PROD ENV"
-        }
-    ],
-    "security": [
-        {
-            "bearerAuth": []
+            "description": "Generated server url"
         }
     ],
     "paths": {
@@ -683,7 +663,7 @@
                     "synopsis": {
                         "type": "string"
                     },
-                    "sharable": {
+                    "shareable": {
                         "type": "boolean"
                     }
                 }
@@ -920,15 +900,6 @@
                         "type": "boolean"
                     }
                 }
-            }
-        },
-        "securitySchemes": {
-            "bearerAuth": {
-                "type": "http",
-                "description": "JWT auth description",
-                "in": "header",
-                "scheme": "bearer",
-                "bearerFormat": "JWT"
             }
         }
     }

@@ -11,10 +11,11 @@ public class BookMapper {
         return Book.builder()
                 .id(request.id())
                 .title(request.title())
+                .isbn(request.isbn())
                 .authorName(request.authorName())
                 .synopsis(request.synopsis())
                 .archived(false)
-                .shareable(request.sharable())
+                .shareable(request.shareable())
                 .build();
     }
 
@@ -28,7 +29,7 @@ public class BookMapper {
                 .rate(book.getRate())
                 .archived(book.isArchived())
                 .shareable(book.isShareable())
-                .owner(book.getOwner().fullName())
+                // .owner(book.getOwner().fullName())
                 .cover(FileUtils.readFileFromLocation(book.getBookCover()))
                 .build();
     }
